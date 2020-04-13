@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import CartItem from '../../component/shop/CartItem';
 import * as CartActions from '../../store/actions/cartActions';
 import * as OrderActions from '../../store/actions/ordersActions';
+import Card from '../../component/UI/Card';
 
 
 const CartScreen = props => {
@@ -33,7 +34,7 @@ const CartScreen = props => {
 
     return (
         <View style={styles.screen}>
-            <View style={styles.summery}>
+            <Card style={styles.summery}>
                 <Text style={styles.summerText}>Total:
                 <Text style={styles.amount}>${Math.round(cartTotalAmount.toFixed(2) * 100) / 100}</Text>
                 </Text>
@@ -41,7 +42,7 @@ const CartScreen = props => {
                 <Button color={Colors.accentColor} title='Order Now'
                     disabled={cartItems.length === 0}
                     onPress={() => { dispatch(OrderActions.addOrder(cartItems, cartTotalAmount)) }} />
-            </View>
+            </Card>
 
             <FlatList
                 data={cartItems}
@@ -76,13 +77,6 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         margin: 10,
         padding: 10,
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.26,
-        shadowRadius: 8,
-        elevation: 3,
-        borderRadius: 10,
-        backgroundColor: 'white',
 
     },
     summerText: {

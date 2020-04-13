@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, Button, TouchableOpacity, Platform } from 'react-native';
 import Colors from '../../constant/Colors';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
+import Card from '../UI/Card';
 
 
 
@@ -15,7 +16,7 @@ const ProductItem = props => {
     }
 
     return (
-        <View style={styles.product}>
+        <Card style={styles.product}>
             <View style={styles.touchable}>
                 <TouchableCmp onPress={props.onSelect} useForeground>
 
@@ -27,12 +28,12 @@ const ProductItem = props => {
                         <Text style={styles.price}>${props.price.toFixed(2)}</Text>
                     </View>
                     <View style={styles.action}>
-                       {props.children}
+                        {props.children}
                     </View>
 
                 </TouchableCmp>
             </View>
-        </View>
+        </Card>
     );
 
 
@@ -40,16 +41,8 @@ const ProductItem = props => {
 
 const styles = StyleSheet.create({
     product: {
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.26,
-        shadowRadius: 8,
-        elevation: 3,
-        borderRadius: 10,
-        backgroundColor: 'white',
         height: 300,
         margin: 20,
-        overflow: "hidden"
 
 
     },

@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { View, Text, TextInput, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, TextInput, ScrollView, StyleSheet, Alert } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../../component/UI/HeaderButton';
 import { useSelector, useDispatch } from 'react-redux';
@@ -23,13 +23,15 @@ const EditProductScreen = props => {
         else {
             dispatch(ProductActions.createProduct(title, description, imageUrl, +price));
         }
-
+        props.navigation.goBack();
     }, [dispatch, prodId, title, imageUrl, description, price]);
 
     useEffect(() => {
         props.navigation.setParams({ submit: submitHandler });
 
     }, [submitHandler]);
+
+
 
     return (
         <ScrollView>
